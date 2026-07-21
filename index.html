@@ -21,7 +21,7 @@
   :root{
     --ink:#0B0B0C; --ink2:#151516; --paper:#F5F1EA; --dim:#C9C4BD; --dim2:#8A8580;
     --line:rgba(245,241,234,.12); --accent:#E1442D; --accent-ink:#0B0B0C;
-    --pass:#3FD08A;
+    --pass:#3FD08A; --warn:#F2B94D;
   }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--ink);color:var(--paper);font-family:-apple-system,"SF Pro Text","Segoe UI",ui-sans-serif,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -59,11 +59,21 @@
   .hero .note code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-family:"SF Mono",ui-monospace,monospace;}
 
   /* mock compliance strip under hero */
-  .heromock{max-width:640px;margin:52px auto 0;background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .heromock{max-width:640px;margin:52px auto 0;background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;overflow:hidden;}
   .heromock .cell{text-align:left;}
   .heromock .k{font-family:"SF Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2);margin-bottom:4px;}
-  .heromock .v{font-family:"SF Mono",ui-monospace,monospace;font-size:15px;font-weight:700;}
+  .heromock .v{font-family:"SF Mono",ui-monospace,monospace;font-size:15px;font-weight:700;transition:opacity .35s ease, color .35s ease;}
+  .heromock .v.fade{opacity:0;}
   .heromock .v.pass{color:var(--pass);}
+  .heromock .v.warn{color:var(--warn);}
+  .heromock .v.dim{color:var(--dim2);font-weight:600;}
+  .heromock .scanbar{position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--accent),transparent);opacity:0;pointer-events:none;}
+  .heromock.checking .scanbar{opacity:.9;animation:heromockScan .8s ease-in-out;}
+  @keyframes heromockScan{from{left:0%;}to{left:100%;}}
+  @media (prefers-reduced-motion: reduce){
+    .heromock .v{transition:none;}
+    .heromock .scanbar{display:none;}
+  }
 
   /* ---------- Section shell ---------- */
   section{padding:84px 0;border-bottom:1px solid var(--line);}
@@ -184,11 +194,12 @@
       </div>
       <p class="note">Windows 10/11 · One-time license, no subscription · Works fully offline</p>
 
-      <div class="heromock">
-        <div class="cell"><div class="k">Head height</div><div class="v">32.1mm</div></div>
-        <div class="cell"><div class="k">Eye line</div><div class="v">22.4mm</div></div>
-        <div class="cell"><div class="k">Background</div><div class="v">#F0F0F0</div></div>
-        <div class="cell"><div class="k">Status</div><div class="v pass">● Compliant</div></div>
+      <div class="heromock" id="heromock">
+        <div class="scanbar"></div>
+        <div class="cell"><div class="k">Head height</div><div class="v" id="hm-head">32.1mm</div></div>
+        <div class="cell"><div class="k">Eye line</div><div class="v" id="hm-eye">22.4mm</div></div>
+        <div class="cell"><div class="k">Background</div><div class="v" id="hm-bg">#F0F0F0</div></div>
+        <div class="cell"><div class="k">Status</div><div class="v pass" id="hm-status">● Compliant</div></div>
       </div>
     </div>
   </div>
@@ -368,6 +379,58 @@
       }
     });
   });
+})();
+
+(function(){
+  var mock = document.getElementById('heromock');
+  if (!mock) return;
+  var states = [
+    { head:"32.1mm", eye:"22.4mm", bg:"#F0F0F0", status:"● Compliant", cls:"pass" },
+    { head:"38.6mm", eye:"19.1mm", bg:"#E8E4DC", status:"● Outside spec", cls:"warn" }
+  ];
+  var els = {
+    head: document.getElementById('hm-head'),
+    eye: document.getElementById('hm-eye'),
+    bg: document.getElementById('hm-bg'),
+    status: document.getElementById('hm-status')
+  };
+  var idx = 0;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function applyState(s){
+    Object.values(els).forEach(function(el){ el.classList.add('fade'); });
+    setTimeout(function(){
+      els.head.textContent = s.head;
+      els.eye.textContent = s.eye;
+      els.bg.textContent = s.bg;
+      els.status.textContent = s.status;
+      els.status.className = 'v ' + s.cls;
+      Object.values(els).forEach(function(el){ el.classList.remove('fade'); });
+    }, 200);
+  }
+
+  function checkingPulse(cb){
+    mock.classList.add('checking');
+    [els.head, els.eye, els.bg].forEach(function(el){ el.classList.add('dim'); });
+    els.status.textContent = '● Checking…';
+    els.status.className = 'v dim';
+    setTimeout(function(){
+      mock.classList.remove('checking');
+      [els.head, els.eye, els.bg].forEach(function(el){ el.classList.remove('dim'); });
+      cb();
+    }, 800);
+  }
+
+  function cycle(){
+    idx = (idx + 1) % states.length;
+    checkingPulse(function(){
+      applyState(states[idx]);
+      setTimeout(cycle, 3500);
+    });
+  }
+
+  if (reduced) { applyState(states[0]); }
+  else { setTimeout(cycle, 2200); }
 })();
 </script>
 

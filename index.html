@@ -95,6 +95,17 @@
   .step h3{position:relative;font-size:17px;text-transform:none;letter-spacing:-.01em;margin-bottom:8px;}
   .step p{position:relative;font-size:13.5px;color:var(--dim);line-height:1.55;margin:0;font-weight:500;}
 
+  /* ---------- Screenshots ---------- */
+  .gallery-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--ink2);}
+  .gallery-frame .stage{padding:18px;}
+  .gallery-frame .stage img{width:100%;display:block;border-radius:8px;border:1px solid var(--line);}
+  .gallery-frame .caption{padding:0 18px 18px;font-size:13.5px;color:var(--dim);font-weight:500;min-height:20px;}
+  .stabs{display:flex;flex-wrap:wrap;gap:6px;padding:14px 16px;border-top:1px solid var(--line);background:rgba(0,0,0,.2);}
+  .stab{background:transparent;border:1px solid var(--line);color:var(--dim);font-family:inherit;font-size:12px;font-weight:700;
+    padding:8px 15px;border-radius:100px;cursor:pointer;transition:all .15s ease;}
+  .stab:hover{color:var(--paper);border-color:var(--dim2);}
+  .stab.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+
   /* ---------- Countries ---------- */
   .countries{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
   .country{background:var(--ink2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;}
@@ -173,6 +184,7 @@
       <div class="navlinks">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
+        <a href="#screenshots">Screenshots</a>
         <a href="#countries">Countries</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
@@ -234,6 +246,29 @@
       <div class="step"><div class="n">01</div><h3>Import your photo</h3><p>Pick a JPG or PNG. Any reasonably framed headshot works, the AI does the rest.</p></div>
       <div class="step"><div class="n">02</div><h3>Auto-crop &amp; compliance check</h3><p>Face detected, crop solved for your country's spec, head height and eye line verified instantly.</p></div>
       <div class="step"><div class="n">03</div><h3>Export or print</h3><p>Save the exact-size file, or generate a ready-to-print sheet with cutting marks.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow">Screenshots</div>
+      <h2>See it before you buy it.</h2>
+      <p>Real screens from the actual app, not renders.</p>
+    </div>
+    <div class="gallery-frame">
+      <div class="stage">
+        <img id="shot" src="screenshots/1.png" alt="Passport Studio screenshot">
+      </div>
+      <div class="caption" id="shotcap">A clean first screen. Import a photo to begin.</div>
+      <div class="stabs" id="stabs">
+        <button class="stab active" data-idx="0">Start here</button>
+        <button class="stab" data-idx="1">Compliant</button>
+        <button class="stab" data-idx="2">Catches problems</button>
+        <button class="stab" data-idx="3">Multi-country</button>
+        <button class="stab" data-idx="4">Pro unlocked</button>
+      </div>
     </div>
   </div>
 </section>
@@ -431,6 +466,29 @@
 
   if (reduced) { applyState(states[0]); }
   else { setTimeout(cycle, 2200); }
+})();
+
+(function(){
+  var stabs = document.getElementById('stabs');
+  if (!stabs) return;
+  var shot = document.getElementById('shot');
+  var cap = document.getElementById('shotcap');
+  var items = [
+    { src: 'screenshots/1.png', caption: 'A clean first screen. Import a photo to begin.' },
+    { src: 'screenshots/2.png', caption: 'Auto-crop with head/eye guides, verified against the real spec.' },
+    { src: 'screenshots/3.png', caption: "It doesn't just crop, it tells you when a photo won't pass." },
+    { src: 'screenshots/4.png', caption: 'Every country gets its own spec, DPI and background check, not one generic template.' },
+    { src: 'screenshots/5.png', caption: 'All 12+ countries, no watermark, full library.' }
+  ];
+  stabs.querySelectorAll('.stab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = parseInt(btn.getAttribute('data-idx'), 10);
+      shot.src = items[idx].src;
+      cap.textContent = items[idx].caption;
+      stabs.querySelectorAll('.stab').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
 })();
 </script>
 

@@ -130,6 +130,14 @@
   .footgrid .fcol a:hover{color:var(--paper);}
   .footbottom{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:11.5px;color:var(--dim2);text-align:center;}
 
+  /* ---------- Toast (mailto fallback) ---------- */
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);z-index:50;
+    background:var(--ink2);border:1px solid var(--line);color:var(--paper);font-size:13.5px;font-weight:600;
+    padding:13px 20px;border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.5);opacity:0;pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;max-width:90vw;text-align:center;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .toast b{color:var(--accent);}
+
   .navtoggle{display:none;background:none;border:none;color:var(--paper);font-size:20px;line-height:1;cursor:pointer;padding:6px 4px;}
 
   @media (max-width:860px){
@@ -159,7 +167,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a class="navbtn" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro</a>
+      <a class="navbtn mailto-fallback" data-email="beyondimagestudios@gmail.com" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro</a>
     </nav>
   </div>
 </header>
@@ -171,7 +179,7 @@
       <h1>Stop getting your <em>photo rejected.</em></h1>
       <p class="sub">Import a photo. Passport Studio's AI finds your face, auto-crops to the exact spec, and checks head height, eye line and background against 12 countries' real requirements, before the passport office does.</p>
       <div class="ctarow">
-        <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
+        <a class="btn primary mailto-fallback" data-email="beyondimagestudios@gmail.com" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
         <a class="btn ghost" href="https://github.com/jpimages/passport-pro/releases/download/v0.1.0/PassportStudio-Setup-0.1.0.exe">Download Free</a>
       </div>
       <p class="note">Windows 10/11 · One-time license, no subscription · Works fully offline</p>
@@ -275,7 +283,7 @@
           <li><span class="tick">✓</span> Batch processing</li>
           <li><span class="tick">✓</span> Email support</li>
         </ul>
-        <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
+        <a class="btn primary mailto-fallback" data-email="beyondimagestudios@gmail.com" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
       </div>
     </div>
   </div>
@@ -302,7 +310,7 @@
     <h2>Get it right the <em>first</em> time.</h2>
     <p>Free to try. ₹3,000 to unlock everything, forever.</p>
     <div class="ctarow">
-      <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
+      <a class="btn primary mailto-fallback" data-email="beyondimagestudios@gmail.com" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
       <a class="btn ghost" href="https://github.com/jpimages/passport-pro/releases/download/v0.1.0/PassportStudio-Setup-0.1.0.exe">Download Free</a>
     </div>
   </div>
@@ -317,7 +325,7 @@
       </div>
       <div class="fcol">
         <div style="color:var(--paper);font-weight:700;margin-bottom:4px;">Contact</div>
-        <a href="mailto:beyondimagestudios@gmail.com">beyondimagestudios@gmail.com</a>
+        <a class="mailto-fallback" data-email="beyondimagestudios@gmail.com" href="mailto:beyondimagestudios@gmail.com">beyondimagestudios@gmail.com</a>
       </div>
       <div class="fcol">
         <div style="color:var(--paper);font-weight:700;margin-bottom:4px;">Product</div>
@@ -329,6 +337,34 @@
     <div class="footbottom">© 2026 Beyond Imagination Studios, India. All Rights Reserved</div>
   </div>
 </footer>
+
+<div class="toast" id="mailtoToast"></div>
+<script>
+(function(){
+  var toast = document.getElementById('mailtoToast');
+  var toastTimer;
+  function showToast(html){
+    toast.innerHTML = html;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 5000);
+  }
+  document.querySelectorAll('.mailto-fallback').forEach(function(a){
+    a.addEventListener('click', function(){
+      var email = a.getAttribute('data-email');
+      if (navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(email).then(function(){
+          showToast('Email copied: <b>' + email + '</b><br>If nothing opened, paste this into your mail app.');
+        }).catch(function(){
+          showToast('No email app opened? Write to us at <b>' + email + '</b>');
+        });
+      } else {
+        showToast('No email app opened? Write to us at <b>' + email + '</b>');
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

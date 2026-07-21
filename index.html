@@ -1,4 +1,18 @@
-<title>Passport Studio — AI Passport &amp; Visa Photo Software</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passport Studio: AI Passport &amp; Visa Photo Software</title>
+<meta name="description" content="Windows software that auto-crops your photo to any country's passport or visa spec and checks compliance before you print. Free to try, one-time ₹3,000 for lifetime Pro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jpimages.github.io/passport-pro/">
+<meta property="og:title" content="Passport Studio: AI Passport &amp; Visa Photo Software">
+<meta property="og:description" content="Auto-crop and compliance-check passport photos for 12+ countries. Free to try, one-time ₹3,000 for Pro.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Passport Studio: AI Passport &amp; Visa Photo Software">
+<meta name="twitter:description" content="Auto-crop and compliance-check passport photos for 12+ countries. Free to try, one-time ₹3,000 for Pro.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230B0B0C'/%3E%3Ccircle cx='12' cy='12' r='7' fill='%23E1442D'/%3E%3C/svg%3E">
 <style>
   :root{
     --ink:#0B0B0C; --ink2:#151516; --paper:#F5F1EA; --dim:#C9C4BD; --dim2:#8A8580;
@@ -17,7 +31,7 @@
 
   /* ---------- Nav ---------- */
   header.site{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
   .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:14.5px;letter-spacing:.01em;}
   .logo i{width:24px;height:24px;border-radius:50%;background:var(--accent);display:inline-block;}
   .navlinks{display:flex;align-items:center;gap:28px;font-size:13.5px;color:var(--dim);font-weight:600;}
@@ -112,20 +126,28 @@
   .footgrid .fcol a:hover{color:var(--paper);}
   .footbottom{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:11.5px;color:var(--dim2);text-align:center;}
 
+  .navtoggle{display:none;background:none;border:none;color:var(--paper);font-size:20px;line-height:1;cursor:pointer;padding:6px 4px;}
+
   @media (max-width:860px){
     .features{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;gap:40px;}
     .countries{grid-template-columns:repeat(2,1fr);}
     .pricing{grid-template-columns:1fr;}
     .heromock{grid-template-columns:repeat(2,1fr);}
-    .navlinks{display:none;}
+    .navtoggle{display:block;}
+    .navlinks{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--ink2);border-bottom:1px solid var(--line);padding:6px 0;}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 24px;width:100%;}
   }
 </style>
+</head>
+<body>
 
 <header class="site">
   <div class="container">
     <nav>
       <div class="logo"><i></i>Passport Studio</div>
+      <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false" onclick="var l=document.querySelector('.navlinks');l.classList.toggle('open');this.setAttribute('aria-expanded', l.classList.contains('open'));">&#9776;</button>
       <div class="navlinks">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
@@ -143,9 +165,9 @@
     <div class="inner">
       <div class="badge"><span class="dot"></span>AI-verified compliant</div>
       <h1>Stop getting your <em>photo rejected.</em></h1>
-      <p class="sub">Import a photo. Passport Studio's AI finds your face, auto-crops to the exact spec, and checks head height, eye line and background against 12 countries' real requirements — before the passport office does.</p>
+      <p class="sub">Import a photo. Passport Studio's AI finds your face, auto-crops to the exact spec, and checks head height, eye line and background against 12 countries' real requirements, before the passport office does.</p>
       <div class="ctarow">
-        <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro — ₹3,000</a>
+        <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
         <a class="btn ghost" href="https://github.com/jpimages/passport-pro/releases/download/v0.1.0/PassportStudio-Setup-0.1.0.exe">Download Free</a>
       </div>
       <p class="note">Windows 10/11 · One-time license, no subscription · Works fully offline</p>
@@ -165,10 +187,10 @@
     <div class="sec-head">
       <div class="eyebrow">What it does</div>
       <h2>Built for the part that actually goes wrong.</h2>
-      <p>Anyone can crop a photo. Getting the head height, eye position and background right — the part passport offices actually reject you for — is the hard part. That's what the AI does.</p>
+      <p>Anyone can crop a photo. Getting the head height, eye position and background right (the part passport offices actually reject you for) is the hard part. That's what the AI does.</p>
     </div>
     <div class="features">
-      <div class="feature"><div class="num">01</div><h3>AI Face Detection &amp; Auto-Crop</h3><p>Finds your face and crops to your country's exact spec automatically — no dragging guides by eye.</p></div>
+      <div class="feature"><div class="num">01</div><h3>AI Face Detection &amp; Auto-Crop</h3><p>Finds your face and crops to your country's exact spec automatically. No dragging guides by eye.</p></div>
       <div class="feature"><div class="num">02</div><h3>Live Compliance Check</h3><p>Head height, eye line and background measured and checked against the real spec, not a rough guess.</p></div>
       <div class="feature"><div class="num">03</div><h3>12+ Countries Built In</h3><p>UK, US, India, Germany, Japan, Canada, Australia, France, China, UAE, Brazil and Schengen visa specs.</p></div>
       <div class="feature"><div class="num">04</div><h3>Print-Ready Sheets</h3><p>10×15cm, 4×6in, 5×7in, A4 and Letter layouts, auto-arranged with cutting marks.</p></div>
@@ -186,7 +208,7 @@
       <p>No manual measuring, no trial and error at the print shop.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3>Import your photo</h3><p>Pick a JPG or PNG. Any reasonably framed headshot works — the AI does the rest.</p></div>
+      <div class="step"><div class="n">01</div><h3>Import your photo</h3><p>Pick a JPG or PNG. Any reasonably framed headshot works, the AI does the rest.</p></div>
       <div class="step"><div class="n">02</div><h3>Auto-crop &amp; compliance check</h3><p>Face detected, crop solved for your country's spec, head height and eye line verified instantly.</p></div>
       <div class="step"><div class="n">03</div><h3>Export or print</h3><p>Save the exact-size file, or generate a ready-to-print sheet with cutting marks.</p></div>
     </div>
@@ -249,7 +271,7 @@
           <li><span class="tick">✓</span> Batch processing</li>
           <li><span class="tick">✓</span> Email support</li>
         </ul>
-        <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro — ₹3,000</a>
+        <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
       </div>
     </div>
   </div>
@@ -262,9 +284,9 @@
       <h2>Before you ask.</h2>
     </div>
     <div class="faq">
-      <div class="qa"><h3>How do I get my Pro license key?</h3><p>Email us to buy, confirm payment (UPI or bank transfer), and we'll email your license key directly — usually within 24 hours. Paste it into the app's "Enter License Key" screen and everything unlocks immediately.</p></div>
+      <div class="qa"><h3>How do I get my Pro license key?</h3><p>Email us to buy, confirm payment (UPI or bank transfer), and we'll email your license key directly, usually within 24 hours. Paste it into the app's "Enter License Key" screen and everything unlocks immediately.</p></div>
       <div class="qa"><h3>Is this a subscription?</h3><p>No. Pro is a one-time payment of ₹3,000. No renewals, no recurring charges.</p></div>
-      <div class="qa"><h3>Does it work without internet?</h3><p>Yes — face detection, compliance checking and everything else runs fully offline on your own machine once installed.</p></div>
+      <div class="qa"><h3>Does it work without internet?</h3><p>Yes. Face detection, compliance checking and everything else runs fully offline on your own machine once installed.</p></div>
       <div class="qa"><h3>What if I have a problem after buying?</h3><p>Email us within 7 days and we'll sort it out.</p></div>
       <div class="qa"><h3>Which Windows versions are supported?</h3><p>Windows 10 and Windows 11, 64-bit.</p></div>
     </div>
@@ -276,7 +298,7 @@
     <h2>Get it right the <em>first</em> time.</h2>
     <p>Free to try. ₹3,000 to unlock everything, forever.</p>
     <div class="ctarow">
-      <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro — ₹3,000</a>
+      <a class="btn primary" href="mailto:beyondimagestudios@gmail.com?subject=Passport%20Studio%20Pro%20-%20Purchase%20Request&body=Hi%2C%0D%0A%0D%0AI%27d%20like%20to%20purchase%20Passport%20Studio%20Pro%20(%E2%82%B93%2C000).%0D%0A%0D%0AName%3A%0D%0APreferred%20payment%20method%20(UPI%2Fbank%20transfer)%3A%0D%0A%0D%0AThanks!">Buy Pro · ₹3,000</a>
       <a class="btn ghost" href="https://github.com/jpimages/passport-pro/releases/download/v0.1.0/PassportStudio-Setup-0.1.0.exe">Download Free</a>
     </div>
   </div>
@@ -303,3 +325,6 @@
     <div class="footbottom">© 2026 Beyond Imagination Studios, India. All Rights Reserved</div>
   </div>
 </footer>
+
+</body>
+</html>
